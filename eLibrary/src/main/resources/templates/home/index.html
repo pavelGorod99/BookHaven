@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Haven - Your Literary Paradise</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Book Haven</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#featured-books">Featured Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#customer-reviews">Customer Reviews</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container text-center">
+        <h1>Welcome to Book Haven</h1>
+        <p>Your Literary Paradise Awaits</p>
+    </div>
+</section>
+
+<!-- Featured Books Section -->
+<section id="featured-books" class="featured-books">
+    <div class="container">
+        <h2>Featured Books</h2>
+        <!-- Display featured books using JavaScript (example) -->
+        <div class="row" id="featuredBooksContainer">
+            <!-- Featured books will be dynamically added here -->
+        </div>
+    </div>
+</section>
+
+<!-- Customer Reviews Section -->
+<section id="customer-reviews" class="customer-reviews">
+    <div class="container">
+        <h2>Customer Reviews</h2>
+        <div class="row">
+            <!-- Customer reviews will be added here -->
+            <div class="col-md-6">
+                <div class="review">
+                    <p>"Amazing collection of books! I found my favorite reads here."</p>
+                    <p><strong>- Jane Doe</strong></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="review">
+                    <p>"Book Haven is my go-to bookstore for all things literary. Highly recommended!"</p>
+                    <p><strong>- John Smith</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                            <textarea class="form-control" id="message" rows="3" placeholder="Your Message"
+                                      required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div id="successMessage" class="alert alert-success mt-3" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS and Custom JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="scripts.js"></script>
+</body>
+
+</html>
