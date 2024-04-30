@@ -1,12 +1,13 @@
 package com.example.bookHaven.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -20,11 +21,12 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @ManyToMany
-    @JoinTable(
-            name = "author_books",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id")
-    )
-    private List<Book> books;
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    @ManyToMany(mappedBy = "authors")
+    @JsonBackReference
+    private Set<Book> books;
 }

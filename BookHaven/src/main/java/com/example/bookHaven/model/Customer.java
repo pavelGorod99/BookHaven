@@ -1,9 +1,7 @@
 package com.example.bookHaven.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +18,10 @@ public class Customer {
     private String email;
     private String phone;
     private String address;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 }
 

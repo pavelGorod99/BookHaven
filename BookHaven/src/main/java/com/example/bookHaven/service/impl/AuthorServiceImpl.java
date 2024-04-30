@@ -45,22 +45,17 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDto saveAuthor(AuthorDto authorDto) {
         Author author = modelMapper.map(authorDto, Author.class);
-        author = authorRepository.save(author);
-        authorDto = modelMapper.map(author, AuthorDto.class);
+        authorRepository.save(author);
         return authorDto;
     }
 
     @Override
     public void updateAuthor(AuthorDto authorDto) {
-        String firstName = authorDto.getFirstName();
-        String lastName = authorDto.getLastName();
-
-        Author author = authorRepository.getAuthorByFirstNameAndLastName(firstName, lastName).orElseThrow(
-                () -> new ResourceNotFoundException("Author", "firstName and lastName", firstName + " " + lastName)
+        Author author = authorRepository.findById(authorDto.getId()).orElseThrow(
+                () -> new ResourceNotFoundException("Author", "id", authorDto.getId().toString())
         );
         author.setFirstName(authorDto.getFirstName());
         author.setLastName(authorDto.getLastName());
-        author.setBooks(authorDto.getBooks());
         authorRepository.save(author);
     }
 

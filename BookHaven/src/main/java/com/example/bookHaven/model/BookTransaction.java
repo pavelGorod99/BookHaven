@@ -9,15 +9,9 @@ import lombok.Setter;
 @Getter
 @Table(name = "book_transaction")
 public class BookTransaction {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
+    @EmbeddedId
+    private BookTransactionId id;
 
     private int quantity;
 }

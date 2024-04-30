@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -19,9 +20,11 @@ public class Transaction {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private BigDecimal totalAmount;
+    private double totalAmount;
 
-    @Column(columnDefinition = "DATE")
-    private LocalDate transactionDate;
+    private int discount;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime transactionDateTime;
 }
 

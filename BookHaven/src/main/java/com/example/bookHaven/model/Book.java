@@ -1,15 +1,18 @@
 package com.example.bookHaven.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +20,27 @@ public class Book {
 
     @Column(unique = true)
     private String title;
-    private String genre;
-    private BigDecimal price;
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
+    private double price;
     private int quantity;
+    private boolean inTrend;
 
-    @ManyToMany(mappedBy = "books")
-    private List<Author> authors;
+    public Book(String title, Genre genre, double price, int quantity, boolean inTrend, Set<Author> authors) {
+        this.title = title;
+        this.genre = genre;
+        this.price = price;
+        this.quantity = quantity;
+        this.inTrend = inTrend;
+        this.authors = authors;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "author_books",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    @JsonManagedReference
+    private Set<Author> authors;
 }
